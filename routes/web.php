@@ -25,3 +25,11 @@ Route::view('/view1','view1')->name('view.view1');
 
 Route::get('/view2',[Controller1::class,'index']);
 
+Route::get('/internal',[Controller1::class,'internal']);
+
+Route::get('/secured', [Controller1::class, 'internal'])->middleware('auth');
+
+Route::get('/login', [Controller1::class, 'viewlogin'])->name('getlogin');
+
+Route::post('/login', [Controller1::class, 'processlogin'])->name('postlogin');
+
